@@ -27,14 +27,6 @@ public class TextService {
 	@Autowired
 	private WordsGroupService wordsGroupService;
 
-	// public TextRepository getTextRepository() {
-	// return textRepository;
-	// }
-	//
-	// public void setTextRepository(TextRepository textRepository) {
-	// this.textRepository = textRepository;
-	// }
-
 	public List<TextForClient> receiveAllTexts() {
 		List<Text> textsFromDatabase = textRepository.findAll();
 		List<TextForClient> textsForClient = textsFromDatabase.stream().map((text) -> {
@@ -60,13 +52,6 @@ public class TextService {
 
 	}
 
-	// public void updateText(Text text, Long textId) {
-	// Text txt = textRepository.findOne(textId);
-	// txt.setTextField(text.getTextField());
-	// textRepository.save(txt);
-	//
-	// }
-	//
 	public void deleteText(Long textId) {
 		textRepository.delete(textId);
 	}

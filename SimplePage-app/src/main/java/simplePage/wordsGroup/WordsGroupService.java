@@ -22,23 +22,6 @@ public class WordsGroupService {
 	@Autowired
 	private TextRepository textRepository;
 
-	// public TextRepository getTextRepository() {
-	// return textRepository;
-	// }
-	//
-	// public void setTextRepository(TextRepository textRepository) {
-	// this.textRepository = textRepository;
-	// }
-	//
-	// public WordsGroupRepository getWordsGroupRepository() {
-	// return wordsGroupRepository;
-	// }
-	//
-	// public void setWordsGroupRepository(WordsGroupRepository
-	// wordsGroupRepository) {
-	// this.wordsGroupRepository = wordsGroupRepository;
-	// }
-
 	public List<WordsGroupForClient> receiveAllWordsGroups() {
 		List<WordsGroup> wordsGroupsFromDatabase = getWordsGroupRepository().findAll();
 		List<WordsGroupForClient> wordsGroupsForClient = wordsGroupsFromDatabase.stream().map((wordsGroup) -> {
@@ -88,24 +71,4 @@ public class WordsGroupService {
 		wordsGroupRepository.save(wordsGroup);
 	}
 
-	// public void updateWordsGroup(WordsGroup wordsGroup, Long wordsGroupId, long
-	// ownerId, long textId) {
-	// WordsGroup updatebleWordsGroup = wordsGroupRepository.findOne(wordsGroupId);
-	// updatebleWordsGroup.setLetter(wordsGroup.getLetter());
-	// updatebleWordsGroup.setWordsAmount(wordsGroup.getWordsAmount());
-	// updatebleWordsGroup.setWords(wordsGroup.getWords());
-	// Text text = textRepository.findByTextId(textId);
-	// updatebleWordsGroup.setText(text);
-	// wordsGroupRepository.save(updatebleWordsGroup);
-	// }
-	//
-	//
-	// public void deleteWordsGroup(Long wordsGroupId) {
-	// wordsGroupRepository.delete(wordsGroupId);
-	// }
-	//
-	// public void deleteAll() {
-	// wordsGroupRepository.deleteAll();
-	//
-	// }
 }

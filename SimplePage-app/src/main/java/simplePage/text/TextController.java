@@ -27,14 +27,6 @@ public class TextController {
 	@Autowired
 	private WordsGroupService wordsGroupService;
 
-	// public TextService getTextService() {
-	// return textService;
-	// }
-	//
-	// public void setTextService(TextService textService) {
-	// this.textService = textService;
-	// }
-
 	// get all texts
 	@RequestMapping(value = "/texts", method = RequestMethod.GET)
 	public List<TextForClient> giveAllTexts() {
@@ -51,22 +43,11 @@ public class TextController {
 	@RequestMapping(value = "/newText", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public void createText(@RequestBody final Text text) {
-		// wordsGroupService.deleteAll();
-		// textService.deleteAll();
-		textService.addNewText(text);
-		textService.generateWordsGroups(text);
+		if (!text.getTextField().equals(null)) {
+			textService.addNewText(text);
+			textService.generateWordsGroups(text);
+		}
 	}
-
-	// // update text
-	// @RequestMapping(path = "/text/update/{textId}", method = RequestMethod.PUT)
-	// @ResponseStatus(HttpStatus.CREATED)
-	// public void updateExistingText(@RequestBody final Text text, @PathVariable
-	// final Long textId) {
-	// // wordsGroupService.deleteAll();
-	// // textService.deleteAll();
-	// textService.updateText(text, textId);
-	// textService.generateWordsGroups(text);
-	// }
 
 	// delete text
 	@RequestMapping(path = "/text/delete/{textId}", method = RequestMethod.DELETE)

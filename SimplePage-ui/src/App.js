@@ -33,6 +33,7 @@ class App extends Component {
 
   render() {
     return (
+      
       <MuiThemeProvider>
             <div>
             <Container fluid={true} style={containerStyle}>
@@ -53,7 +54,7 @@ class App extends Component {
                     
                     <MenuItem primaryText="Enter New Text"
                               containerElement={<Link to="/newText" />}
-                              /><br/>   
+                              /><br/>  
                     <MenuItem primaryText="Text Analyzer"
                               containerElement={<Link to="/texts" />}
                               /><br/>                  

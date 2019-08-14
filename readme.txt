@@ -1,1 +1,1 @@
-
+Run the downloaded application by following Instalation file in Documentation folder

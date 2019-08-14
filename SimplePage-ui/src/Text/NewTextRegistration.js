@@ -4,15 +4,18 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import swal from 'sweetalert';
+import ImportFromFileBodyComponent from './ImportFromFileBodyComponent';
 
 class NewTextRegistration extends Component{
     constructor(props){
         super(props);
         this.state = {
             textField:'',
+
         };
     }
 
+    
     submit = (event)=> {
         let textRegistrationInfo = {
             textField: this.state.textField,
@@ -64,7 +67,17 @@ class NewTextRegistration extends Component{
                     />
                 </form>
                 </div>
+                <div>
+                    <ImportFromFileBodyComponent
+                    open={this.state.showModal}
+                    closeAction={this.closeModal}
+                    //textField={this.state.file} 
+                    textField = {this.state.handleFiles} 
+                    />
+                </div>
+                 
             </MuiThemeProvider>
+          
         )
     }
 

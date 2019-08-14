@@ -38,44 +38,4 @@ public class WordsGroup {
 	@JoinColumn(name = "textId")
 	private Text text;
 
-	// public String getWords() {
-	// return words;
-	// }
-	//
-	// public void setWords(String words) {
-	// this.words = words;
-	// }
-	//
-	// public long getWordsGroupId() {
-	// return wordsGroupId;
-	// }
-	//
-	// public void setWordsGroupId(long wordsGroupId) {
-	// this.wordsGroupId = wordsGroupId;
-	// }
-	//
-	// public String getLetter() {
-	// return letter;
-	// }
-	//
-	// public void setLetter(String letter) {
-	// this.letter = letter;
-	// }
-	//
-	// public Integer getWordsAmount() {
-	// return wordsAmount;
-	// }
-	//
-	// public void setWordsAmount(Integer wordsAmount) {
-	// this.wordsAmount = wordsAmount;
-	// }
-	//
-	// public Text getText() {
-	// return text;
-	// }
-	//
-	// public void setText(Text text) {
-	// this.text = text;
-	// }
-
 }
