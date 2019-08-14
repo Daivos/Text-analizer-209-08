@@ -43,7 +43,7 @@ public class TextController {
 	@RequestMapping(value = "/newText", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public void createText(@RequestBody final Text text) {
-		if (!text.getTextField().equals(null)) {
+		if (!text.getTextField().equals(null) && !text.getTextField().isEmpty()) {
 			textService.addNewText(text);
 			textService.generateWordsGroups(text);
 		}
