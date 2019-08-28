@@ -39,10 +39,26 @@ public class TextController {
 		return textService.getOneTextById(textId);
 	}
 
+	// // get single text by userId and textId
+	// @GetMapping("/singleText/{userId}{textId}")
+	// public Text getTextById(@PathVariable("textId") final Long textId) {
+	// return textService.getOneTextById(textId);
+	// }
+
 	// create new text
 	@RequestMapping(value = "/newText", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public void createText(@RequestBody final Text text) {
+		if (!text.getTextField().equals(null) && !text.getTextField().isEmpty()) {
+			textService.addNewText(text);
+			textService.generateWordsGroups(text);
+		}
+	}
+
+	// create new text of User
+	@RequestMapping(value = "/user/newText", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
+	public void createText(@RequestBody final Text text, @PathVariable final String patientId) {
 		if (!text.getTextField().equals(null) && !text.getTextField().isEmpty()) {
 			textService.addNewText(text);
 			textService.generateWordsGroups(text);
@@ -54,5 +70,11 @@ public class TextController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteTextFromDatabase(@PathVariable final Long textId) {
 		textService.deleteText(textId);
+	}
+
+	// get all texts by usertId
+	@RequestMapping(value = "/textsByUserId/{userId}", method = RequestMethod.GET)
+	public List<TextForClient> getTextsByUserId(@PathVariable(value = "userId") long userId) {
+		return textService.receiveTextsByUserId(userId);
 	}
 }

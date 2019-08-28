@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.Data;
+import simplePage.user.UserService;
 import simplePage.wordsGroup.WordsGroup;
 import simplePage.wordsGroup.WordsGroupService;
 
@@ -26,6 +27,8 @@ public class TextService {
 	private TextRepository textRepository;
 	@Autowired
 	private WordsGroupService wordsGroupService;
+	@Autowired
+	private UserService userService;
 
 	public List<TextForClient> receiveAllTexts() {
 		List<Text> textsFromDatabase = textRepository.findAll();
@@ -96,5 +99,18 @@ public class TextService {
 			wordsGroupService.addNewWordsGroup(wordsGroup, text.getTextId());
 		}
 
+	}
+
+	public List<TextForClient> receiveTextsByUserId(long userId) {
+		List<Text> textsFromDatabase = getTextRepository().findAll().stream()
+				.filter(text -> text.getUser().getUserId() == userId).collect(Collectors.toList());
+		List<TextForClient> textsByUserIdForClient = textsFromDatabase.stream().map((text) -> {
+			TextForClient textForClient = new TextForClient();
+			textForClient.setTextId(text.getTextId());
+			textForClient.setTextField(text.getTextField());
+			textForClient.setUser(text.getUser());
+			return textForClient;
+		}).collect(Collectors.toList());
+		return textsByUserIdForClient;
 	}
 }
